@@ -282,7 +282,7 @@ def fubm_caseHVDC_vt_normalNR():
 
 def fubm_caseHVDC_vt():
     # file_path = 'C:/Users/raiya/Desktop/gridcal_models/pegase89.gridcal'
-    file_path = 'Grids_and_profiles/grids/case89pegase.m'
+    file_path = 'Grids_and_profiles/grids/IEEE 5 Bus.xlsx'
     grid = gce.FileOpen(file_path).open()
     assert grid is not None
     pf_options = gce.PowerFlowOptions(solver_type=gce.SolverType.NR, verbose=1, generalised_pf=True, tolerance=1e-10)
@@ -295,6 +295,42 @@ def fubm_caseHVDC_vt():
     # print(results.get_branch_df())
     print("Error:", results.error)
     print("Converged?", results.converged)
+
+
+def whatever_func():
+    import time
+    start = time.time()
+    # file_path = 'C:/Users/raiya/Desktop/gridcal_models/pegase89.gridcal'
+    file_path = 'Grids_and_profiles/grids/Pegase 2869.xlsx'
+    grid = gce.FileOpen(file_path).open()
+    assert grid is not None
+    pf_options = gce.PowerFlowOptions(solver_type=gce.SolverType.NR, verbose=1, generalised_pf=True, tolerance=1e-10)
+
+    results = gce.power_flow(grid, options=pf_options)
+    results.converged
+
+    print(results.get_bus_df())
+    
+    
+    #compare to normal NR
+    pf_options = gce.PowerFlowOptions(solver_type=gce.SolverType.NR, verbose=1)
+    results_normal = gce.power_flow(grid, options=pf_options)
+    
+    print(results.get_bus_df().loc[:, ['Vm', 'Va']])
+    print(results_normal.get_bus_df().loc[:, ['Vm', 'Va']])
+    df_diff = abs((results.get_bus_df().loc[:, ['Vm', 'Va']] - results_normal.get_bus_df().loc[:, ['Vm', 'Va']])/ results_normal.get_bus_df().loc[:, ['Vm', 'Va']]) * 100
+    print(df_diff)
+
+    #find the largest difference
+    print("biggest error:")
+    vm_array = df_diff['Vm'].to_numpy()
+    va_array = df_diff['Va'].to_numpy()
+    print("Vm:", max(vm_array))
+    print("Va:", max(va_array))
+
+    end = time.time() - start
+    print("Time:", end)
+
 
 def ieee5bus_example():
     # file_path = 'C:/Users/raiya/Desktop/gridcal_models/pegase89.gridcal'
@@ -1063,9 +1099,7 @@ if __name__ == '__main__':
     # case14_example() #converges True
     # acdc2bus_example() #converges True
     # acdc4bus_example() #converges true
-
     bus300_example()
-    
     compare_results()
 
 
