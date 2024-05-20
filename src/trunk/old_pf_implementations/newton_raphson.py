@@ -18,6 +18,7 @@
 import time
 import scipy
 import numpy as np
+import scipy.sparse as sp
 from GridCalEngine.Utils.NumericalMethods.sparse_solve import get_sparse_type, get_linear_solver
 from GridCalEngine.Simulations.Derivatives.ac_jacobian import AC_jacobianVc
 import GridCalEngine.Simulations.PowerFlow.NumericalMethods.common_functions as cf

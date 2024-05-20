@@ -677,6 +677,7 @@ def multi_island_pf_nc(nc: NumericalCircuit,
                     results=res,
                     b_idx=island.original_bus_idx,
                     br_idx=island.original_branch_idx,
+                    generalised_pf = options.generalised_pf
                 )
 
             else:
@@ -765,6 +766,7 @@ def multi_island_pf(multi_circuit: MultiCircuit,
     :return: PowerFlowResults instance
     """
 
+
     nc = compile_numerical_circuit_at(
         circuit=multi_circuit,
         t_idx=t,
@@ -779,6 +781,7 @@ def multi_island_pf(multi_circuit: MultiCircuit,
         control_remote_voltage=options.control_remote_voltage,
         logger=logger,
     )
+
 
     res = multi_island_pf_nc(nc=nc, options=options, logger=logger)
 
