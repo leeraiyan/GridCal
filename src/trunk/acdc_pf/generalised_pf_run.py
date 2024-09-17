@@ -216,8 +216,7 @@ def linn5bus_example2():
     print(results.get_branch_df())
     print("Error:", results.error)
 
-
-def pegase_example():
+def pegase_example89():
     # file_path = 'C:/Users/raiya/Desktop/gridcal_models/pegase89.gridcal'
     file_path = 'Grids_and_profiles/grids/case89pegase.m'
     grid = gce.FileOpen(file_path).open()
@@ -246,8 +245,7 @@ def pegase2k_example():
     print(results.get_branch_df())
     print("Error:", results.error)
 
-
-def bus300_example():
+def acdc10_example():
     # file_path = 'C:/Users/raiya/Desktop/gridcal_models/pegase89.gridcal'
     file_path = 'Grids_and_profiles/grids/10_bus_hvdc.gridcal'
     grid = gce.FileOpen(file_path).open()
@@ -754,7 +752,6 @@ def test_convergence(directory_path, log_file_path):
                 log_file.flush()  # Ensure that each entry is written and saved immediately
 
 
-
 import os
 
 def whatever(directory_path, file_names, log_path):
@@ -1110,6 +1107,9 @@ if __name__ == '__main__':
     # acdc3bus_example() #problem with the control
     # pegase2k_example() #runs super slow and does not converge
 
+
+    # whatever_func()
+    
     # two_grids_of_3bus() #does not use gpf
     # case9()
     # case14()

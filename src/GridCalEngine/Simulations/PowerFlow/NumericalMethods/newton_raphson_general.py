@@ -519,6 +519,7 @@ def update_setpoints(nc, Vm0, Va0, S0, I0, Y0, p_from, p_to, q_from, q_to, p_zip
 
     return Vm0, Va0, S0, I0, Y0, p_from, p_to, q_from, q_to, p_zip, q_zip, modulations, taus
 
+    return Vm0, Va0, S0, I0, Y0, p_from, p_to, q_from, q_to, p_zip, q_zip, modulations, taus
 
 def pf_function_raiyan(x: Vec,
                 compute_jac: bool,

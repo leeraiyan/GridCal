@@ -20,6 +20,9 @@ import numpy as np
 import numba as nb
 from typing import Tuple, List
 from GridCalEngine.enumerations import BusMode, TapPhaseControl, TapModuleControl
+import pandas as pd
+from typing import Union, Tuple, List
+from GridCalEngine.enumerations import TransformerControlType, ConverterControlType, BusMode
 from GridCalEngine.basic_structures import Vec, IntVec, BoolVec
 
 
